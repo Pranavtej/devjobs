@@ -243,16 +243,18 @@ app.post('/apply/:userid/:jobid', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
+const port = 8000;
 // Connect to the MongoDB database
-connectToDB(() => {
+connectToDB((err) => {
+  if (err) throw err
   console.log('Connected to the database.');
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
 });
 
-const port = process.env.PORT || 8000; // Set the port number
+ // Set the port number
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+
 
 module.exports = app;
