@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 
 const app = express();
 app.use(cors());
@@ -62,7 +62,8 @@ app.get('/', (req, res) => {
 app.post('/api/createAccount', async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    // const hashedPassword = bcrypt.hashSync(password, 10);
+    const hashedPassword = password
     const newUser = new User({
       name,
       email,
@@ -81,8 +82,8 @@ app.post('/loginUser', async (req, res) => {
     const { email, password } = req.body;
     const userDetails = await User.findOne({ email });
     if (userDetails) {
-      const isMatch = bcrypt.compareSync(password, userDetails.password);
-      if (isMatch) {
+      // const isMatch = bcrypt.compareSync(password, userDetails.password);
+      if (password == userDetails.password) {
         res.send(userDetails);
       } else {
         res.status(404).json({ error: 'User not found' });
@@ -99,7 +100,8 @@ app.post('/loginUser', async (req, res) => {
 app.post('/createCompany', async (req, res) => {
   try {
     const { name, companyName, email, password, location } = req.body;
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    // const hashedPassword = bcrypt.hashSync(password, 10);
+    const hashedPassword = password
     const newCompany = new CompanyDetails({
       name: companyName,
       RecruiterName: name,
@@ -120,8 +122,8 @@ app.post('/loginCompany', async (req, res) => {
     const { email, password } = req.body;
     const companyDetails = await CompanyDetails.findOne({ email });
     if (companyDetails) {
-      const isMatch = bcrypt.compareSync(password, companyDetails.password);
-      if (isMatch) {
+      // const isMatch = bcrypt.compareSync(password, companyDetails.password);
+      if (password == companyDetails.password) {
         res.send(companyDetails);
       } else {
         res.status(404).json({ error: 'Company not found' });
