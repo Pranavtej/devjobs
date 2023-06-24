@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 
 const app = express();
 
-app.use(express.json());
+app.use();
 app.use(cors());
 
 
@@ -289,4 +289,5 @@ const port = process.env.PORT || 8000; // Set the port number
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
 module.exports = app;
