@@ -245,17 +245,16 @@ app.post('/apply/:userid/:jobid', async (req, res) => {
   }
 });
 const port = 8000;
-// Connect to the MongoDB database
-connectToDB((err) => {
-  if (err) throw err
-  console.log('Connected to the database.');
-  app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+
+
+
+// Define a serverless function
+module.exports = async (req, res) => {
+  // Connect to the MongoDB database
+  await connectToDB(() => {
+    console.log('Connected to database.');
   });
-});
 
- // Set the port number
-
-
-
-module.exports = app;
+  // Call the Express app to handle the request
+  app(req, res);
+};
