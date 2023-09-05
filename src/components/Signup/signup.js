@@ -58,7 +58,7 @@ export default function Signup() {
     } else {
       
       try{
-      const responce = await axios.post('http://localhost:8000/api/createAccount/', {name, email, password});
+      const responce = await axios.post('https://devjobs-backend-bmj6.onrender.com/api/createAccount/', {name, email, password});
       console.log(responce);
       if (responce){
         console.log("Account created successfully");

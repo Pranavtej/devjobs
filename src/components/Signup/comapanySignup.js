@@ -61,7 +61,7 @@ export default function ComapanySignup() {
     } else {
       
       try{
-      const responce = await axios.post(`http://localhost:8000/createCompany/${name}/${companyName}/${email}/${password}/${location}`);
+      const responce = await axios.post(`https://devjobs-backend-bmj6.onrender.com/createCompany/${name}/${companyName}/${email}/${password}/${location}`);
       console.log(responce);
       if (responce){
         console.log("Account created successfully");

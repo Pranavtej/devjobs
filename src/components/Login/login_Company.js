@@ -48,7 +48,7 @@ const handleClick = async(event) => {
   setEmail(email)
   setPassword(password)
 
-  const responce= await axios.post(`http://localhost:8000/loginCompany/${email}/${password}`,{
+  const responce= await axios.post(`https://devjobs-backend-bmj6.onrender.com/loginCompany/${email}/${password}`,{
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
