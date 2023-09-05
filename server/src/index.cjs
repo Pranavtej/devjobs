@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const env = require('dotenv').config();
 // const bcrypt = require('bcryptjs');
-
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -57,6 +57,7 @@ async function connectToDB() {
 
 app.get('/', (req, res) => {
   res.send('DevJobs API');
+
 });
 
 // Create a new user
