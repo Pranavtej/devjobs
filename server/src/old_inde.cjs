@@ -16,7 +16,7 @@ async function connectToDB(cb) {
   const USER = process.env.DB_USER;
   const PASS = process.env.DB_PASS;
   const DB_NAME = "devjobs";
-  const URI = `mongodb+srv://pranavteja:cUSitb0KBaMaZ7ID@cluster0.3hxlkya.mongodb.net/?retryWrites=true&w=majority`;
+  const URI = ``;
 
   await mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
